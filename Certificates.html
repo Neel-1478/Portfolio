@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="x-icon" href="images/Screenshot 2024-06-18 213019.png">
+
+    <title>Certificates</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, rgba(21, 28, 36, 1) 0%, rgba(29, 40, 50, 1) 100%);
+            color: #FFFFFF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #FF5733;
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #2c3e4f;
+            color: #ffffff;
+        }
+
+        .certificate-content {
+            max-width: 800px;
+            margin: 80px auto 20px auto;
+            padding: 30px;
+            background-color: rgba(29, 40, 50, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            color: #FFFFFF;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .certificate-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .certificate-content h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #FFD700;
+            position: relative;
+        }
+
+        .certificate-content h1::after {
+            content: '';
+            width: 50px;
+            height: 4px;
+            background-color: #FF5733;
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        .certificate-content p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #C0C4C8;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .certificate-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .certificate-content img:hover {
+            transform: scale(1.05);
+        }
+
+        .certificate-content a.button {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 25px;
+            background-color: #FF5733;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 20px;
+        }
+
+        .certificate-content a.button:hover {
+            background-color: #2c3e4f;
+            color: #ffffff;
+        }
+
+        @media (max-width: 480px) {
+            .certificate-content {
+                padding: 20px;
+            }
+
+            .certificate-content h1 {
+                font-size: 2em;
+            }
+
+            .certificate-content p {
+                font-size: 1em;
+            }
+
+            .certificate-content a.button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .back-button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="index.html#certificateSection" class="back-button">Go Back</a>
+
+    <div class="certificate-content">
+        <h1 id="certificate-title">Certificate Title</h1>
+        <img id="certificate-image" src="" alt="Certificate Image" style="display: none;">
+        <p id="certificate-content">Certificate content goes here. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit.</p>
+        <a id="certificate-link" href="#" class="button" target="_blank" style="display: none;">Check Credentials</a>
+    </div>
+
+    <script>
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        function loadCertificateContent() {
+            var certificateId = getParameterByName('id');
+            var certificateTitle = document.getElementById('certificate-title');
+            var certificateContent = document.getElementById('certificate-content');
+            var certificateImage = document.getElementById('certificate-image');
+            var certificateLink = document.getElementById('certificate-link');
+
+            var certificates = {
+                '1': {
+                    title: 'Project Management Foundation',
+                    content: 'Project management is a critical discipline that ensures projects are executed effectively and efficiently. It involves applying knowledge, skills, tools, and techniques to meet project requirements. Here, we delve into the key principles and practices that form the foundation of successful project management.\n\n1. Project Initiation: Properly defining project objectives, scope, and stakeholders is crucial. This phase sets the foundation for the entire project lifecycle.\n\n2. Planning and Scheduling: Developing a comprehensive project plan with clear milestones, timelines, and resource allocation ensures clarity and alignment.\n\n3. Execution and Monitoring: Implementing the project plan while monitoring progress, managing risks, and making necessary adjustments to ensure project goals are met.\n\n4. Closure and Evaluation: Finalizing all project activities, evaluating outcomes, and documenting lessons learned to improve future projects.\n\nConclusion: Effective project management is essential for achieving organizational goals and delivering value to stakeholders. By understanding these foundational principles, project managers can navigate complexities and drive successful project outcomes.',
+                    image: 'images/Screenshot%202024-06-18%20233322.png',
+                    link: 'https://www.linkedin.com/learning/certificates/97eee2a27abf515f0313f1ebfd08ea1c45b107e635ae018ec6a3180364b0578c'
+                },
+                '2': {
+                    title: 'HackerRank CSS Certification',
+                    content: 'Obtaining the HackerRank CSS Certification has been a pivotal milestone in my journey as a front-end developer. Throughout the certification process, I gained valuable insights into advanced CSS techniques, including flexbox, grid layouts, animations, and responsive design principles.\n\nKey Learnings:\n1. Mastering Flexbox: Understanding how to use flex containers and items to create flexible layouts that adapt to different screen sizes.\n\n2. Harnessing the Power of Grid: Utilizing CSS Grid to create complex layouts with precise control over rows and columns, enhancing the structure and alignment of web pages.\n\n3. Animating with CSS: Implementing CSS animations and transitions to create engaging user experiences, from simple hover effects to complex animations.\n\n4. Responsive Design: Applying media queries and viewport units to ensure web applications are accessible and optimized across various devices and screen resolutions.\n\nConclusion:\nThe HackerRank CSS Certification has equipped me with the skills to create visually appealing and interactive web experiences. By mastering these CSS techniques, I can now confidently tackle real-world projects and contribute effectively to web development teams.',
+                    image: 'images/Screenshot%202024-06-18%20233823.png',
+                    link: 'https://www.hackerrank.com/certificates/6c9c9d16f94d'
+                },
+                '3': {
+                    title: 'HackerRank Python Certification',
+                    content: 'Earning the HackerRank Python Certification marks a significant achievement in my career as a software developer. Throughout the certification journey, I have honed my skills in Python programming, covering essential topics such as data structures, algorithms, object-oriented programming, and more.\n\nKey Learnings:\n1. Mastering Python Basics: Strengthening my understanding of Python syntax, variables, data types, and control structures to build foundational knowledge.\n\n2. Exploring Data Structures: Learning how to implement and manipulate various data structures in Python, including lists, dictionaries, tuples, and sets.\n\n3. Algorithms and Problem Solving: Developing efficient algorithms and strategies to solve programming challenges, enhancing problem-solving skills.\n\n4. Object-Oriented Programming (OOP): Understanding the principles of OOP in Python, including classes, inheritance, polymorphism, and encapsulation.\n\nConclusion:\nThe HackerRank Python Certification has equipped me with the expertise to tackle complex programming tasks and contribute effectively to software development projects. With these skills, I am well-prepared to take on new challenges and advance in my career as a Python developer.',
+                    image: 'images/Screenshot%202024-06-18%20233850.png',
+                    link: 'https://www.hackerrank.com/certificates/D0680B989ABE'
+                }
+            };
+
+            if (certificates[certificateId]) {
+                certificateTitle.textContent = certificates[certificateId].title;
+                certificateContent.textContent = certificates[certificateId].content;
+                certificateImage.src = certificates[certificateId].image;
+                certificateImage.style.display = 'block';
+                certificateLink.href = certificates[certificateId].link;
+                certificateLink.style.display = 'inline-block';
+            } else {
+                certificateTitle.textContent = 'Certificate Not Found';
+                certificateContent.textContent = 'Sorry, the certificate you are looking for does not exist.';
+                certificateImage.style.display = 'none';
+                certificateLink.style.display = 'none';
+            }
+        }
+
+        window.onload = loadCertificateContent;
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="x-icon" href="images/Screenshot 2024-06-18 213019.png">
+
+    <title>Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, rgba(21, 28, 36, 1) 0%, rgba(29, 40, 50, 1) 100%);
+            color: #FFFFFF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #FF5733;
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #2c3e4f;
+            color: #ffffff;
+        }
+
+        .blog-content {
+            max-width: 800px;
+            margin: 80px auto 20px auto;
+            padding: 30px;
+            background-color: rgba(29, 40, 50, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            color: #FFFFFF;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-content h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #FFD700;
+            position: relative;
+        }
+
+        .blog-content h1::after {
+            content: '';
+            width: 50px;
+            height: 4px;
+            background-color: #FF5733;
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        .blog-content p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #C0C4C8;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .blog-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-content img:hover {
+            transform: scale(1.05);
+        }
+
+        .blog-content a.button {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 25px;
+            background-color: #FF5733;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 20px;
+        }
+
+        .blog-content a.button:hover {
+            background-color: #2c3e4f;
+            color: #ffffff;
+        }
+
+        @media (max-width: 480px) {
+            .blog-content {
+                padding: 20px;
+            }
+
+            .blog-content h1 {
+                font-size: 2em;
+            }
+
+            .blog-content p {
+                font-size: 1em;
+            }
+
+            .blog-content a.button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .back-button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="index.html#blog-section" class="back-button">Go Back</a>
+
+    <div class="blog-content">
+        <h1 id="blog-title">Blog Title</h1>
+        <img id="blog-image" src="" alt="Blog Image" style="display: none;">
+        <p id="blog-content">Blog content goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <a id="blog-link" href="#" class="button" target="_blank" style="display: none;">View original post</a>
+    </div>
+
+    <script>
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        function loadBlogContent() {
+            var blogId = getParameterByName('id');
+            var blogTitle = document.getElementById('blog-title');
+            var blogContent = document.getElementById('blog-content');
+            var blogImage = document.getElementById('blog-image');
+            var blogLink = document.getElementById('blog-link');
+
+            var blogs = {
+                '1': {
+                    title: 'My #100DaysOfCode Journey: Learning LeetCode and Web Development',
+                    content: 'Welcome to my #100DaysOfCode journey! Over the past 100 days, I have dedicated myself to enhancing my coding skills through a mix of algorithm practice on LeetCode and exploring web development concepts. Join me as I reflect on my progress, the challenges I faced, and the insights gained from this enriching experience.\n\nDay 1-10: Getting Started with LeetCode\nI kicked off my challenge by diving into LeetCode, a platform renowned for its vast collection of coding challenges. I started with fundamental problems, focusing on data structures like arrays, strings, and linked lists. Each problem solved gave me a deeper understanding of algorithmic thinking and problem-solving techniques.\n\nDay 11-30: Leveling Up with Algorithms\nAs I progressed, I tackled more complex problems involving sorting algorithms, dynamic programming, and graph theory. Each day presented a new challenge, pushing me to think critically and optimize my solutions for efficiency. Debugging and optimizing code became second nature as I honed my skills through practice.\n\nDay 31-50: Exploring Web Development Basics\nTo complement my algorithm practice, I delved into web development fundamentals. I started with HTML and CSS, learning how to structure web pages and style them effectively. Understanding responsive design principles and CSS frameworks like Bootstrap allowed me to create visually appealing and functional layouts.\n\nDay 51-75: Building Dynamic Web Applications\nWith a solid foundation in place, I ventured into JavaScript and its libraries. I explored DOM manipulation, event handling, and asynchronous programming with promises. Using frameworks like Vue.js, I built interactive components and integrated APIs to fetch and display dynamic data on my projects.\n\nDay 76-100: Integrating LeetCode Skills with Web Projects\nIn the final stretch of my challenge, I combined my algorithmic skills with web development projects. I created a portfolio website showcasing my LeetCode solutions, where visitors could explore my coding journey and interact with live demos of my web applications. I also contributed my code snippets and solutions to open-source repositories, fostering collaboration within the coding community.\n\nConclusion\nCompleting the #100DaysOfCode challenge has been a rewarding journey of growth and discovery. I have not only improved my problem-solving abilities through LeetCode but also gained practical experience in building web applications from scratch. This challenge has equipped me with valuable skills, from algorithms and data structures to front-end development and project management.\n\nReflections and Advice\nIf you are considering taking on the #100DaysOfCode challenge, I highly recommend it. It is a transformative experience that will push you to expand your coding knowledge, build confidence in your abilities, and connect with a supportive community of developers worldwide. Whether you\'re passionate about algorithms, web development, or both, this challenge offers a structured approach to achieving your coding goals.',
+                    image: '/images/Screenshot 2024-06-18 233035.png',
+                    link: 'https://www.linkedin.com/posts/neel1478_100daysofcode-100daysofcode-bytexl-activity-7207026508601643008-M6yo?utm_source=share&utm_medium=member_desktop'
+                },
+
+
+            };
+
+            if (blogs[blogId]) {
+                blogTitle.textContent = blogs[blogId].title;
+                blogContent.textContent = blogs[blogId].content;
+                blogImage.src = blogs[blogId].image;
+                blogImage.style.display = 'block';
+                blogLink.href = blogs[blogId].link;
+                blogLink.style.display = 'inline-block';
+            } else {
+                blogTitle.textContent = 'Blog Not Found';
+                blogContent.textContent = 'Sorry, the blog you are looking for does not exist.';
+                blogImage.style.display = 'none';
+                blogLink.style.display = 'none';
+            }
+        }
+
+        window.onload = loadBlogContent;
+    </script>
+
+</body>
+
+</html>
